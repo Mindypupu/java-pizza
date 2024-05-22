@@ -8,27 +8,27 @@ public class Customer {
     public Customer(){}
 
     public Customer(String name, int phoneNumber,String address, String invoice, int taxIDNumber){
-        name = this.name;
-        phoneNumber = this.phoneNumber;
-        address = this.address;
-        invoice = this.invoice;
-        taxIDNumber = this.taxIDNumber;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.invoice = invoice;
+        this.taxIDNumber = taxIDNumber;
     }
 
     public void setName(String name){
-        name = this.name;
+        this.name = name;
     }
     public void setPhoneNumber(int phoneNumber){
-        phoneNumber = this.phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
     public void setAddress(String address){
-        address = this.address;
+        this.address = address;
     }
     public void setInvoice(String invoice){
-        invoice = this.invoice;
+        this.invoice = invoice;
     }
     public void setTaxIDNumber(int taxIDNumber){
-        taxIDNumber = this.taxIDNumber;
+        this.taxIDNumber = taxIDNumber;
     }
 
     public String getName(){
