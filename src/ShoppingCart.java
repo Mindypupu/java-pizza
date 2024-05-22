@@ -1,23 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppingCart {
     //Pizza class
-    private List<Pizza> pizzas;
+    private Map<Pizza, Integer> pizzas;
     private double discountPercentage;
 
     public ShoppingCart(){
-        pizzas = new ArrayList<>();
-        discountPercentage = 0.0;
+        pizzas = new HashMap<>();
+        discountPercentage = 1.0;
     }
-    public void addPizza(String name, int quantity){
-        for (Pizza pizza : pizzas) {
-            if (pizza.getName().equals(name)) {
-                pizza.setQuantity(pizza.getQuantity() + quantity);
-                return;
-            }
-        }
-        pizzas.add(new Pizza(name, quantity));
+    public void addPizza(Pizza newPizza, int quantity){
+        pizzas.merge(newPizza, quantity, Integer::sum);
     }
     public void removePizza(Pizza pizza){
         pizzas.remove(pizza);
@@ -34,8 +28,8 @@ public class ShoppingCart {
 
     public double calculateTotal(){
         double total = 0;
-        for(Pizza pizza : pizzas){
-            total += pizza.getQuantity() * pizza.getPrice();
+        for(Map.Entry<Pizza, Integer> entry: pizzas.entrySet()){
+            total += entry.getValue() * entry.getKey().getPrice();
         }
         total *= discountPercentage;
         return total;
