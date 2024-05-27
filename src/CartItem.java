@@ -1,3 +1,4 @@
+import model.Pizza;
 public class CartItem {
     private Pizza pizza;
     private String size;

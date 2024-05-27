@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import model.Pizza;
 
 public class ShoppingCart {
     //Pizza class
