@@ -4,27 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AvailablePizza {
-    ArrayList<Pizza>pizzas = new ArrayList<Pizza>();
-    pizzas.add(new HawaiiPizza());
-    pizzas.add(new FrenchCaffiPizza());
-    pizzas.add(new TruffleSeaPizza());
-    pizzas.add(new SmokedBaconPizza());
-    pizzas.add(new SuixiCowPizza());
-    pizzas.add(new JapOctopusPizza());
-    pizzas.add(new SeaFoodPizza());
-    pizzas.add(new TeppanyakiPizza());
-    pizzas.add(new GoldenChickenPizza());
-    pizzas.add(new SuperAssemblyPizza());
-    pizzas.add(new KimchiPorkPizza());
-    pizzas.add(new SmokedChickenPizza());
-    pizzas.add(new SpicyMexicoPizza());
-    pizzas.add(new SeaLandPizza());
-    pizzas.add(new VegetablePizza());
-    pizzas.add(new CurrySeaPizza());
-    pizzas.add(new JapTeriyakiPizza());
-    pizzas.add(new FourFuPizza());
-    pizzas.add(new DoubleSausagePizza());
-    pizzas.add(new VegeMushroomPizza());
+    ArrayList<Pizza>pizzas = new ArrayList<>();
+    public AvailablePizza(){
+        pizzas.add(new HawaiiPizza());
+        pizzas.add(new FrenchCaffiPizza());
+        pizzas.add(new TruffleSeaPizza());
+        pizzas.add(new SmokedBaconPizza());
+        pizzas.add(new SuixiCowPizza());
+        pizzas.add(new JapOctopusPizza());
+        pizzas.add(new SeaFoodPizza());
+        pizzas.add(new TeppanyakiPizza());
+        pizzas.add(new GoldenChickenPizza());
+        pizzas.add(new SuperAssemblyPizza());
+        pizzas.add(new KimchiPorkPizza());
+        pizzas.add(new SmokedChickenPizza());
+        pizzas.add(new SpicyMexicoPizza());
+        pizzas.add(new SeaLandPizza());
+        pizzas.add(new VegetablePizza());
+        pizzas.add(new CurrySeaPizza());
+        pizzas.add(new JapTeriyakiPizza());
+        pizzas.add(new FourFuPizza());
+        pizzas.add(new DoubleSausagePizza());
+        pizzas.add(new VegeMushroomPizza());
+    }
+    public List<Pizza> getPizzas(){
+        return pizzas;
+    }
 }
 
 // 夏威夷
