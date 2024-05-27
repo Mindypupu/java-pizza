@@ -1,10 +1,10 @@
 package ui;
 
+import model.Pizza;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.IOException;
 
@@ -12,18 +12,10 @@ public class PizzaItem extends JPanel {
     static int IMAGE_WIDTH = 200;
     static int IMAGE_HEIGHT = 150;
     private Image image;
-    private String pizzaName;
-    private String pizzaDescription;
-    private int bigPrice;
-    private int smallPrice;
     private JButton pizzaImageButton;
 
-    public PizzaItem(String imgPath, String pizzaName, String pizzaDescription, int bigPrice, int smallPrice) {
-        this.pizzaName = pizzaName;
-        this.pizzaDescription = pizzaDescription;
-        this.bigPrice = bigPrice;
-        this.smallPrice = smallPrice;
-        loadImage(imgPath);
+    public PizzaItem(Pizza pizza) {
+        loadImage(pizza.getImgPath());
 
 //        setBorder(new LineBorder(Color.BLACK, 2));
 //        setBorder(new CompoundBorder(getBorder(), new EmptyBorder(0, 0, 0, 0)));
@@ -34,12 +26,12 @@ public class PizzaItem extends JPanel {
         pizzaImageButton.setBorder(BorderFactory.createEmptyBorder());
 
         add(pizzaImageButton);
-        JLabel nameLabel = new JLabel(pizzaName);
+        JLabel nameLabel = new JLabel(pizza.getName());
         nameLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(nameLabel);
-        add(new LargePriceLabel(bigPrice));
-        add(new SmallPriceLabel(smallPrice));
+        add(new LargePriceLabel(pizza.getLargePrice()));
+        add(new SmallPriceLabel(pizza.getSmallPrice()));
         AddToCartButton addToCartButton = new AddToCartButton();
         add(new AddToCartButton());
     }
@@ -71,19 +63,19 @@ public class PizzaItem extends JPanel {
 
 class PriceLabel extends JLabel {
     static Font font = new Font("Arial", Font.PLAIN, 16);
-    PriceLabel(int price, String prefix) {
+    PriceLabel(double price, String prefix) {
         super(prefix + " $" + price);
         setFont(font);
     }
 }
 
 class LargePriceLabel extends PriceLabel {
-    LargePriceLabel(int price) {
+    LargePriceLabel(double price) {
         super(price, "大");
     }
 }
 class SmallPriceLabel extends PriceLabel {
-    SmallPriceLabel(int price) {
+    SmallPriceLabel(double price) {
         super(price, "小");
     }
 }

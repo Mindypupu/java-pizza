@@ -1,16 +1,26 @@
 package ui;
 
+import model.AvailablePizza;
+import model.Pizza;
+import utils.WrapLayout;
+
 import javax.swing.*;
-import java.awt.*;
 
-public class PizzaPanel extends JPanel {
+public class PizzaPanel extends JScrollPane {
     public PizzaPanel(){
-        setLayout(new FlowLayout());
+        JPanel panel = new JPanel();
+        panel.setLayout(new WrapLayout());
 
-        add(new PizzaItem("/pizza.png", "Pepperoni", "A classic pizza", 10, 5));
-        add(new PizzaItem("/pizza.png", "Margherita", "A classic pizza", 10, 5));
-        add(new PizzaItem("/pizza.png", "Hawaiian", "A classic pizza", 10, 5));
-        add(new PizzaItem("/pizza.png", "Veggie", "A classic pizza", 10, 5));
+        AvailablePizza availablePizza = new AvailablePizza();
+        for (Pizza pizza : availablePizza.getPizzas()) {
+            panel.add(new PizzaItem(pizza));
+        }
 
+        setAutoscrolls(true);
+        setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        this.getVerticalScrollBar().setUnitIncrement(16);
+        setViewportView(panel);
     }
 }
+
