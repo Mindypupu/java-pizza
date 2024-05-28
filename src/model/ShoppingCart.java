@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 import model.Pizza;
@@ -86,5 +88,9 @@ public class ShoppingCart {
         }
         total *= discountPercentage;
         return total;
+    }
+
+    public List<CartItem> getItems(){
+        return items;
     }
 }
