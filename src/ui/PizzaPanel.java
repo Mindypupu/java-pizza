@@ -7,13 +7,13 @@ import utils.WrapLayout;
 import javax.swing.*;
 
 public class PizzaPanel extends JScrollPane {
-    public PizzaPanel(){
+    public PizzaPanel(CartPanel cartPanel) {
         JPanel panel = new JPanel();
         panel.setLayout(new WrapLayout());
 
         AvailablePizza availablePizza = new AvailablePizza();
         for (Pizza pizza : availablePizza.getPizzas()) {
-            panel.add(new PizzaItem(pizza));
+            panel.add(new PizzaItem(pizza, cartPanel));
         }
 
         setAutoscrolls(true);
@@ -21,6 +21,7 @@ public class PizzaPanel extends JScrollPane {
         setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         this.getVerticalScrollBar().setUnitIncrement(16);
         setViewportView(panel);
+        setVisible(true);
     }
 }
 
