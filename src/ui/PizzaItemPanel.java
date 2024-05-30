@@ -8,14 +8,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.IOException;
 
-public class PizzaItem extends JPanel {
+public class PizzaItemPanel extends JPanel {
     static int IMAGE_WIDTH = 200;
     static int IMAGE_HEIGHT = 150;
     private Image image;
     private Integer selectedQuantity = 1;
     private String selectedSize = "large";
 
-    public PizzaItem(Pizza pizza, CartPanel cartPanel) {
+    public PizzaItemPanel(Pizza pizza, CartPanel cartPanel) {
         loadImage(pizza.getImgPath());
 
         setBackground(Color.WHITE);

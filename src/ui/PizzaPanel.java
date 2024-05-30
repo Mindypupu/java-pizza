@@ -13,7 +13,7 @@ public class PizzaPanel extends JScrollPane {
 
         AvailablePizza availablePizza = new AvailablePizza();
         for (Pizza pizza : availablePizza.getPizzas()) {
-            panel.add(new PizzaItem(pizza, cartPanel));
+            panel.add(new PizzaItemPanel(pizza, cartPanel));
         }
 
         setAutoscrolls(true);
