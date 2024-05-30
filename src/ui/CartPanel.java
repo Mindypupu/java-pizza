@@ -10,20 +10,23 @@ import java.awt.*;
 
 public class CartPanel extends JPanel {
     final private ShoppingCart cart = new ShoppingCart();
-    CartTitlePanel titleLabel = new CartTitlePanel();
-    CartItemListPanel cartItemListPanel = new CartItemListPanel(cart);
-    TotalPricePanel totalPricePanel = new TotalPricePanel(cart);
-    private JButton checkoutButton;
+    final private CartItemListPanel cartItemListPanel = new CartItemListPanel(cart);
+    final private TotalPricePanel totalPricePanel = new TotalPricePanel(cart);
+
     public CartPanel() {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 
+        ShoppingCart cart = new ShoppingCart();
+        CartItemListPanel cartItemListPanel = new CartItemListPanel(cart);
+        TotalPricePanel totalPricePanel = new TotalPricePanel(cart);
+
+        CartTitlePanel titleLabel = new CartTitlePanel();
         titleLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         titleLabel.setBorder(new EmptyBorder(8, 8, 8, 8));
-        checkoutButton = new JButton("送出");
-        checkoutButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "已送出\n您的pizza將於30分鐘後抵達\uD83C\uDF55\uD83C\uDF55");
-        });
+
+        JButton checkoutButton = new JButton("送出");
+        checkoutButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "已送出\n您的pizza將於30分鐘後抵達\uD83C\uDF55\uD83C\uDF55"));
         checkoutButton.setPreferredSize(new Dimension(100, 100));
         checkoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -53,12 +56,11 @@ public class CartPanel extends JPanel {
 }
 
 class CartTitlePanel extends JPanel {
-    private JLabel titleLabel;
     public CartTitlePanel() {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBackground(Color.WHITE);
 
-        titleLabel = new JLabel("購物車");
+        JLabel titleLabel = new JLabel("購物車");
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titleLabel.setFont(new Font("Arial", Font.PLAIN, 22));
         titleLabel.setBorder(new EmptyBorder(8, 8, 8, 8));
@@ -69,7 +71,7 @@ class CartTitlePanel extends JPanel {
 }
 
 class CartItemListPanel extends JPanel {
-    private ShoppingCart cart;
+    final private ShoppingCart cart;
     public CartItemListPanel(ShoppingCart cart) {
         this.cart = cart;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -88,10 +90,11 @@ class CartItemListPanel extends JPanel {
 }
 
 class TotalPricePanel extends JPanel {
-    private JLabel totalPriceLabel;
-    private ShoppingCart cart;
+    final private JLabel totalPriceLabel;
+    final private ShoppingCart cart;
     public TotalPricePanel(ShoppingCart cart) {
         this.cart = cart;
+
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBackground(Color.WHITE);
 
@@ -99,7 +102,6 @@ class TotalPricePanel extends JPanel {
         totalPriceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         totalPriceLabel.setFont(new Font("Arial", Font.PLAIN, 22));
         totalPriceLabel.setBorder(new EmptyBorder(8, 8, 8, 8));
-
 
         add(Box.createHorizontalGlue());
         add(totalPriceLabel);
