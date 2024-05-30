@@ -25,6 +25,8 @@ public class CartPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "已送出\n您的pizza將於30分鐘後抵達\uD83C\uDF55\uD83C\uDF55");
         });
         checkoutButton.setPreferredSize(new Dimension(100, 100));
+        checkoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         add(titleLabel, BorderLayout.NORTH);
         add(cartItemListPanel, BorderLayout.CENTER);
 
