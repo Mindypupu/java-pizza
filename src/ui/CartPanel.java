@@ -12,14 +12,9 @@ public class CartPanel extends JPanel {
     final private ShoppingCart cart = new ShoppingCart();
     final private CartItemListPanel cartItemListPanel = new CartItemListPanel(cart);
     final private TotalPricePanel totalPricePanel = new TotalPricePanel(cart);
-
     public CartPanel() {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
-
-        ShoppingCart cart = new ShoppingCart();
-        CartItemListPanel cartItemListPanel = new CartItemListPanel(cart);
-        TotalPricePanel totalPricePanel = new TotalPricePanel(cart);
 
         CartTitlePanel titleLabel = new CartTitlePanel();
         titleLabel.setFont(new Font("Arial", Font.PLAIN, 20));
