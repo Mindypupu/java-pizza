@@ -11,7 +11,7 @@ public class ShoppingCart {
 
     public ShoppingCart() {
         items = new ArrayList<>();
-        discountPercentage = 1.0;
+        discountPercentage = 0.0;
     }
 
     public void changePizza(Pizza pizza, String size, int quantity, Pizza newPizza){
@@ -68,11 +68,17 @@ public class ShoppingCart {
     public void applyDiscountCode(String code) {
         if (code.equals("DISCOUNT10")) {
             discountPercentage = 0.1;
-        } else if (code.equals("DISCOUNT20")) {
+        } else if (code.equals("iLoveJava")) {
             discountPercentage = 0.2;
+        } else if (code.equals("LiuLiWei")) {
+            discountPercentage = 0.9;
         } else {
             System.out.println("Invalid discount code.");
         }
+    }
+
+    public double getDiscountPercentage(){
+        return discountPercentage;
     }
 
     public double calculateTotal(){
@@ -86,7 +92,8 @@ public class ShoppingCart {
                 total += item.getPizza().getSmallPrice() * item.getQuantity();
             }
         }
-        total *= discountPercentage;
+        total *= (1 - discountPercentage);
+        total = Math.round(total * 10.0) / 10.0;
         return total;
     }
 

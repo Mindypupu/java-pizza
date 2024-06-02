@@ -28,9 +28,12 @@ public class CartPanel extends JPanel {
         add(titleLabel, BorderLayout.NORTH);
         add(cartItemListPanel, BorderLayout.CENTER);
 
+        CartDiscountPanel cartDiscountPanel = new CartDiscountPanel(cart, totalPricePanel);
+
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
         bottomPanel.setBackground(Color.WHITE);
+        bottomPanel.add(cartDiscountPanel);
         bottomPanel.add(totalPricePanel);
         bottomPanel.add(checkoutButton);
         bottomPanel.add(Box.createHorizontalGlue());
@@ -47,6 +50,48 @@ public class CartPanel extends JPanel {
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(200, 0);
+    }
+}
+
+class CartDiscountPanel extends JPanel {
+    final private JTextField discountField;
+    final private JLabel messageLabel;
+    final private ShoppingCart cart;
+    final private TotalPricePanel totalPricePanel;
+
+    public CartDiscountPanel(ShoppingCart cart, TotalPricePanel totalPricePanel) {
+        this.cart = cart;
+        this.totalPricePanel = totalPricePanel;
+
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBackground(Color.WHITE);
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
+        inputPanel.setBackground(Color.WHITE);
+
+        discountField = new JTextField(10);
+        discountField.setText("Input discount code");
+        JButton applyButton = new JButton("Apply");
+        messageLabel = new JLabel("");
+
+        applyButton.addActionListener(e -> applyDiscount());
+
+        inputPanel.add(discountField);
+        inputPanel.add(applyButton);
+        add(inputPanel);
+        add(messageLabel);
+    }
+
+    private void applyDiscount() {
+        String code = discountField.getText();
+        cart.applyDiscountCode(code);
+        if (cart.getDiscountPercentage() > 0) {
+            messageLabel.setText("Discount applied: " + (int)(cart.getDiscountPercentage() * 100) + "%");
+        } else {
+            messageLabel.setText("Invalid discount code.");
+        }
+        totalPricePanel.updateTotalPrice();
     }
 }
 
