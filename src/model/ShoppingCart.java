@@ -73,6 +73,7 @@ public class ShoppingCart {
         } else if (code.equals("LiuLiWei")) {
             discountPercentage = 0.9;
         } else {
+            discountPercentage = 0.0;
             System.out.println("Invalid discount code.");
         }
     }
