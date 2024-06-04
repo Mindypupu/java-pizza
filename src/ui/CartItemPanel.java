@@ -19,8 +19,8 @@ public class CartItemPanel extends JPanel {
 
         JLabel nameLabel = new JLabel("（" + size + "）" + item.getPizza().getName());
         JLabel quantityLabel = new JLabel("\t\tx" + item.getQuantity());
-        nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-        quantityLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        nameLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        quantityLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
 
         add(nameLabel);
         add(quantityLabel);

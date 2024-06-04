@@ -5,6 +5,7 @@ import model.Pizza;
 import utils.WrapLayout;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PizzaPanel extends JScrollPane {
     public PizzaPanel(CartPanel cartPanel) {

@@ -75,10 +75,10 @@ public class ShoppingCart {
         } else if (code.equals("iLoveJava")) {
             discountPercentage = 0.2;
         } else if (code.equals("LiuLiWei")) {
-            discountPercentage = 0.9;
+            discountPercentage = 0.5;
         } else {
             discountPercentage = 0.0;
-            System.out.println("Invalid discount code.");
+            System.out.println("折扣碼不存在");
         }
     }
 
@@ -98,7 +98,7 @@ public class ShoppingCart {
             }
         }
         total *= (1 - discountPercentage);
-        total = Math.round(total * 10.0) / 10.0;
+        total = Math.round(total);
         return total;
     }
 

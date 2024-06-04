@@ -26,7 +26,7 @@ public class PizzaItemPanel extends JPanel {
 
         JLabel nameLabel = new JLabel(pizza.getName());
         nameLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        nameLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
 
         JRadioButton largeRadioButton = new JRadioButton();
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -36,15 +36,17 @@ public class PizzaItemPanel extends JPanel {
         largeRadioButton.setSelected(true);
         largeRadioButton.setText("大 $" + pizza.getLargePrice());
         smallRadioButton.setText("小 $" + pizza.getSmallPrice());
-        largeRadioButton.setFont(new Font("Arial", Font.PLAIN, 16));
-        smallRadioButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        largeRadioButton.setBackground(Color.WHITE);
+        smallRadioButton.setBackground(Color.WHITE);
+        largeRadioButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        smallRadioButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
         largeRadioButton.addActionListener(e -> selectedSize = "large");
         smallRadioButton.addActionListener(e -> selectedSize = "small");
 
 
         JComboBox<Integer> quantityComboBox = new JComboBox<>();
         quantityComboBox.setModel(new DefaultComboBoxModel<>(new Integer[]{1, 2, 3, 4, 5}));
-        quantityComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
+        quantityComboBox.setFont(new Font("SansSerif", Font.PLAIN, 16));
         quantityComboBox.addActionListener(e -> selectedQuantity = (Integer) quantityComboBox.getSelectedItem());
 
 
@@ -96,7 +98,7 @@ class AddToCartButton extends JButton {
         setText("加入購物車");
         setBackground(Color.WHITE);
         setForeground(Color.BLACK);
-        setFont(new Font("Arial", Font.PLAIN, 16));
+        setFont(new Font("SansSerif", Font.PLAIN, 16));
         setFocusPainted(false);
     }
 }

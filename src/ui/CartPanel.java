@@ -17,7 +17,7 @@ public class CartPanel extends JPanel {
         setBackground(Color.WHITE);
 
         CartTitlePanel titleLabel = new CartTitlePanel();
-        titleLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        titleLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
         titleLabel.setBorder(new EmptyBorder(8, 8, 8, 8));
 
         JButton checkoutButton = new JButton("送出");
@@ -30,7 +30,7 @@ public class CartPanel extends JPanel {
         add(titleLabel, BorderLayout.NORTH);
         add(cartItemListPanel, BorderLayout.CENTER);
 
-        JButton resetButton = new JButton(("reset"));
+        JButton resetButton = new JButton(("重置"));
         resetButton.addActionListener(e -> reset());
         resetButton.setPreferredSize(new Dimension(100, 50));
 
@@ -95,8 +95,8 @@ class CartDiscountPanel extends JPanel {
         inputPanel.setBackground(Color.WHITE);
 
         discountField = new JTextField(10);
-        discountField.setText("Input discount code.");
-        JButton applyButton = new JButton("Apply");
+        discountField.setText("輸入折扣碼");
+        JButton applyButton = new JButton("輸入");
         messageLabel = new JLabel(" ");
 
         applyButton.addActionListener(e -> applyDiscount());
@@ -111,9 +111,9 @@ class CartDiscountPanel extends JPanel {
         String code = discountField.getText();
         cart.applyDiscountCode(code);
         if (cart.getDiscountPercentage() > 0) {
-            messageLabel.setText("Discount applied: " + (int)(cart.getDiscountPercentage() * 100) + "%");
+            messageLabel.setText("使用成功：只需付" + (int)((1 - cart.getDiscountPercentage()) * 100) + "%");
         } else {
-            messageLabel.setText("Invalid discount code.");
+            messageLabel.setText("折扣碼不存在");
         }
         totalPricePanel.updateTotalPrice();
     }
@@ -126,7 +126,7 @@ class CartTitlePanel extends JPanel {
 
         JLabel titleLabel = new JLabel("購物車");
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        titleLabel.setFont(new Font("Arial", Font.PLAIN, 22));
+        titleLabel.setFont(new Font("SansSerif", Font.PLAIN, 22));
         titleLabel.setBorder(new EmptyBorder(8, 8, 8, 8));
         add(Box.createHorizontalGlue());
         add(titleLabel);
@@ -164,7 +164,7 @@ class TotalPricePanel extends JPanel {
 
         totalPriceLabel = new JLabel("合計：$" + cart.calculateTotal());
         totalPriceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        totalPriceLabel.setFont(new Font("Arial", Font.PLAIN, 22));
+        totalPriceLabel.setFont(new Font("SansSerif", Font.PLAIN, 22));
         totalPriceLabel.setBorder(new EmptyBorder(8, 8, 8, 8));
 
         add(Box.createHorizontalGlue());
