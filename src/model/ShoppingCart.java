@@ -14,6 +14,10 @@ public class ShoppingCart {
         discountPercentage = 0.0;
     }
 
+    public void removeAll() {
+        items.clear();
+    }
+
     public void changePizza(Pizza pizza, String size, int quantity, Pizza newPizza){
         for(CartItem item : items){
             //exist

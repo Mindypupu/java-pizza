@@ -21,12 +21,31 @@ public class CartPanel extends JPanel {
         titleLabel.setBorder(new EmptyBorder(8, 8, 8, 8));
 
         JButton checkoutButton = new JButton("送出");
-        checkoutButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "已送出\n您的pizza將於30分鐘後抵達\uD83C\uDF55\uD83C\uDF55"));
-        checkoutButton.setPreferredSize(new Dimension(100, 100));
-        checkoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        checkoutButton.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "已送出\n您的pizza將於30分鐘後抵達\uD83C\uDF55\uD83C\uDF55");
+            reset();
+        });
+        checkoutButton.setPreferredSize(new Dimension(100, 50));
 
         add(titleLabel, BorderLayout.NORTH);
         add(cartItemListPanel, BorderLayout.CENTER);
+
+        JButton resetButton = new JButton(("reset"));
+        resetButton.addActionListener(e -> reset());
+        resetButton.setPreferredSize(new Dimension(100, 50));
+
+        JPanel innerPanel = new JPanel(new GridBagLayout());
+        innerPanel.setBackground(Color.WHITE);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        innerPanel.add(checkoutButton, gbc);
+
+        gbc.gridx++;
+        innerPanel.add(resetButton, gbc);
 
         CartDiscountPanel cartDiscountPanel = new CartDiscountPanel(cart, totalPricePanel);
 
@@ -35,10 +54,15 @@ public class CartPanel extends JPanel {
         bottomPanel.setBackground(Color.WHITE);
         bottomPanel.add(cartDiscountPanel);
         bottomPanel.add(totalPricePanel);
-        bottomPanel.add(checkoutButton);
+        bottomPanel.add(innerPanel);
         bottomPanel.add(Box.createHorizontalGlue());
 
         add(bottomPanel, BorderLayout.SOUTH);
+    }
+    public void reset(){
+        cart.removeAll();
+        cartItemListPanel.paintItems();
+        totalPricePanel.updateTotalPrice();
     }
 
     public void addItem(Pizza pizza, String size, int quantity) {
@@ -71,9 +95,9 @@ class CartDiscountPanel extends JPanel {
         inputPanel.setBackground(Color.WHITE);
 
         discountField = new JTextField(10);
-        discountField.setText("Input discount code");
+        discountField.setText("Input discount code.");
         JButton applyButton = new JButton("Apply");
-        messageLabel = new JLabel("");
+        messageLabel = new JLabel(" ");
 
         applyButton.addActionListener(e -> applyDiscount());
 
